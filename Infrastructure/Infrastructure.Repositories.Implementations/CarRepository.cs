@@ -17,13 +17,15 @@ namespace Infrastructure.Repositories.Implementations
             _context = context;
         }
         
-        public async Task<List<SearchCarsResultModel>> SearchCarsAsync(SearchCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchQueryModel queryModel)
         {
             return await _context.Cars
                 .Where(car => car.Reservations
-                    .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || res.EndDateUtc < queryModel.AvailabilityDateUtc))
+                    .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || 
+                                res.EndDateUtc < queryModel.AvailabilityDateUtc))
                 .Where(car => car.CarPrices
-                    .Any(p => queryModel.AvailabilityDateUtc > p.StartDateUtc && (p.EndDateUtc == null || queryModel.AvailabilityDateUtc < p.EndDateUtc)))
+                    .Any(p => queryModel.AvailabilityDateUtc > p.StartDateUtc && 
+                              (p.EndDateUtc == null || queryModel.AvailabilityDateUtc < p.EndDateUtc)))
                 .Select(car => new SearchCarsResultModel
                 {
                     CarId = car.Id,
