@@ -28,10 +28,10 @@ namespace WebApi.Controllers
         }
         
         [HttpPost("search")]
-        public async Task<IActionResult> SearchCarsAsync(SearchCarsRequestModel request)
+        public async Task<IActionResult> SearchAsync(SearchCarsRequestModel request)
         {
             var query = _mapper.Map<SearchCarsQueryModel>(request);
-            var result = await _carService.SearchCarsAsync(query);
+            var result = await _carService.SearchAsync(query);
             var response = _mapper.Map<List<SearchCarsResponseModel>>(result);
             return Ok(response);
         }

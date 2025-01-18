@@ -19,9 +19,9 @@ namespace Services.Implementations
             _mapper = mapper;
             _carRepository = carRepository;
         }
-        public async Task<List<SearchCarsResultModel>> SearchCarsAsync(SearchCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel)
         {
-            return await _carRepository.SearchCarsAsync(queryModel);
+            return await _carRepository.SearchAsync(queryModel);
         }
     }
 }

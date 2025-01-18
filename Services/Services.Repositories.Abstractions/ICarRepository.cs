@@ -6,6 +6,6 @@ namespace Services.Repositories.Abstractions
 {
     public interface ICarRepository
     {
-        Task<List<SearchCarsResultModel>> SearchCarsAsync(SearchCarsQueryModel queryModel);
+        Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel);
     }
 }

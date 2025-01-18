@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories.Implementations
             _context = context;
         }
         
-        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel)
         {
             return await _context.Cars
                 .Where(car => car.Reservations
