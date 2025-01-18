@@ -6,7 +6,8 @@ public class Car
 {
     public Car()
     {
-        Reservations = new List<Reservation>();
+        Reservations = new List<CarReservation>();
+        CarPrices = new List<CarPrice>();
     }
     
     public int Id { get; set; }
@@ -17,5 +18,7 @@ public class Car
 
     public virtual CarModel Model { get; set; }
     
-    public virtual List<Reservation> Reservations { get; set; }
+    public virtual ICollection<CarReservation> Reservations { get; set; }
+    
+    public virtual ICollection<CarPrice> CarPrices { get; set; }
 }

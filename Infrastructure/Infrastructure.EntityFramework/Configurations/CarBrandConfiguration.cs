@@ -4,31 +4,31 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.EntityFramework.Configurations;
 
-public class BrandConfiguration : IEntityTypeConfiguration<Brand>
+public class CarBrandConfiguration : IEntityTypeConfiguration<CarBrand>
 {
-    public void Configure(EntityTypeBuilder<Brand> builder)
+    public void Configure(EntityTypeBuilder<CarBrand> builder)
     {
         builder.HasData(
-            new Brand
+            new CarBrand
             {
                 Id = 1,
                 Name = "Toyota"
             },
-            new Brand
+            new CarBrand
             {
                 Id = 2,
                 Name = "Ford"
             },
-            new Brand
+            new CarBrand
             {
                 Id = 3,
                 Name = "BMW"
-            }, new Brand
+            }, new CarBrand
             {
                 Id = 4,
                 Name = "Honda"
             },
-            new Brand
+            new CarBrand
             {
                 Id = 5,
                 Name = "Chevrolet"

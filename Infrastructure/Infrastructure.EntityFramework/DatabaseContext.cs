@@ -16,11 +16,11 @@ namespace Infrastructure.EntityFramework
         
         public DbSet<CarModel> CarModels { get; set; }
         
-        public DbSet<Brand> Brands { get; set; }
+        public DbSet<CarBrand> CarBrands { get; set; }
         
-        public DbSet<Price> Prices { get; set; }
+        public DbSet<CarPrice> CarPrices { get; set; }
         
-        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<CarReservation> CarReservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,11 @@ namespace Infrastructure.EntityFramework
                 .WithOne(c=> c.Car)
                 .IsRequired();
             
-            modelBuilder.ApplyConfiguration(new BrandConfiguration());
+            modelBuilder.ApplyConfiguration(new CarBrandConfiguration());
+            modelBuilder.ApplyConfiguration(new CarConfiguration());
+            modelBuilder.ApplyConfiguration(new CarModelConfiguration());
+            modelBuilder.ApplyConfiguration(new CarPriceConfiguration());
+            modelBuilder.ApplyConfiguration(new CarReservationConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

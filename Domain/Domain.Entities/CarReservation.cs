@@ -2,9 +2,9 @@
 
 namespace Domain.Entities;
 
-public class Price
+public class CarReservation
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
     
     public int CarId { get; set; }
     
@@ -12,7 +12,7 @@ public class Price
     
     public DateTime EndDateUtc { get; set; }
     
-    public decimal PriceAmount { get; set; }
+    public DateTime ReservedAtUtc { get; set; }
 
     public virtual Car Car { get; set; }
 }

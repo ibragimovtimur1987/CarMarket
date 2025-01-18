@@ -20,14 +20,14 @@ namespace Infrastructure.Repositories.Implementations
             var startDate = DateTime.Today;
             var endDate = startDate.AddDays(10);
 
-            var newBooking = new Reservation
+            var newBooking = new CarReservation
             {
                 CarId = carId,
                 StartDateUtc = startDate,
                 EndDateUtc = endDate
             };
 
-            _context.Reservations.Add(newBooking);
+            _context.CarReservations.Add(newBooking);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }
