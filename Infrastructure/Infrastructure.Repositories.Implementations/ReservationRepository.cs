@@ -12,12 +12,10 @@ namespace Infrastructure.Repositories.Implementations
     public class ReservationRepository : IReservationRepository
     {
         private readonly DatabaseContext _context;
-        private readonly ICarRepository _carRepository;
         private readonly int ReservationDaysCount = 10;
-        public ReservationRepository(DatabaseContext context, ICarRepository carRepository)
+        public ReservationRepository(DatabaseContext context)
         {
             _context = context;
-            _carRepository = carRepository;
         }
 
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
