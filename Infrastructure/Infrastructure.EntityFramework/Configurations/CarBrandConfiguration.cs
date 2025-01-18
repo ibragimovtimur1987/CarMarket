@@ -8,6 +8,7 @@ public class CarBrandConfiguration : IEntityTypeConfiguration<CarBrand>
 {
     public void Configure(EntityTypeBuilder<CarBrand> builder)
     {
+        builder.HasMany(b => b.CarModels).WithOne(b => b.CarBrand).HasForeignKey(r => r.BrandId);
         builder.Property(p => p.Name).HasMaxLength(4000);
         builder.HasData(
             new CarBrand

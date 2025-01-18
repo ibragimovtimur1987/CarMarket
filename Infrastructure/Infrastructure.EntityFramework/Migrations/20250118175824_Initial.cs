@@ -34,17 +34,17 @@ namespace Infrastructure.EntityFramework.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     BrandId = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "character varying(4000)", maxLength: 4000, nullable: true),
-                    CarBrandId = table.Column<int>(type: "integer", nullable: true)
+                    Name = table.Column<string>(type: "character varying(4000)", maxLength: 4000, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CarModel", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarModel_CarBrand_CarBrandId",
-                        column: x => x.CarBrandId,
+                        name: "FK_CarModel_CarBrand_BrandId",
+                        column: x => x.BrandId,
                         principalTable: "CarBrand",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -125,15 +125,15 @@ namespace Infrastructure.EntityFramework.Migrations
 
             migrationBuilder.InsertData(
                 table: "CarModel",
-                columns: new[] { "Id", "BrandId", "CarBrandId", "Name" },
+                columns: new[] { "Id", "BrandId", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1, null, "Corolla" },
-                    { 2, 2, null, "Focus" },
-                    { 3, 3, null, "X5" },
-                    { 4, 1, null, "Camry" },
-                    { 5, 4, null, "Civic" },
-                    { 6, 5, null, "Malibu" }
+                    { 1, 1, "Corolla" },
+                    { 2, 2, "Focus" },
+                    { 3, 3, "X5" },
+                    { 4, 1, "Camry" },
+                    { 5, 4, "Civic" },
+                    { 6, 5, "Malibu" }
                 });
 
             migrationBuilder.InsertData(
@@ -172,9 +172,9 @@ namespace Infrastructure.EntityFramework.Migrations
                 column: "ModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarModel_CarBrandId",
+                name: "IX_CarModel_BrandId",
                 table: "CarModel",
-                column: "CarBrandId");
+                column: "BrandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CarPrice_CarId",

@@ -134,16 +134,13 @@ namespace Infrastructure.EntityFramework.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("CarBrandId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .HasMaxLength(4000)
                         .HasColumnType("character varying(4000)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarBrandId");
+                    b.HasIndex("BrandId");
 
                     b.ToTable("CarModel");
 
@@ -311,8 +308,10 @@ namespace Infrastructure.EntityFramework.Migrations
             modelBuilder.Entity("Domain.Entities.CarModel", b =>
                 {
                     b.HasOne("Domain.Entities.CarBrand", "CarBrand")
-                        .WithMany()
-                        .HasForeignKey("CarBrandId");
+                        .WithMany("CarModels")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CarBrand");
                 });
@@ -344,6 +343,11 @@ namespace Infrastructure.EntityFramework.Migrations
                     b.Navigation("CarPrices");
 
                     b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CarBrand", b =>
+                {
+                    b.Navigation("CarModels");
                 });
 
             modelBuilder.Entity("Domain.Entities.CarModel", b =>

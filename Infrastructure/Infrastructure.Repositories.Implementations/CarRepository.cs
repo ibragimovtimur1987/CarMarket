@@ -29,7 +29,9 @@ namespace Infrastructure.Repositories.Implementations
                 .Select(car => new SearchCarsResultModel
                 {
                     CarId = car.Id,
-                    Price = car.CarPrices.Select(p => p.Price).First()
+                    Price = car.CarPrices.Select(p => p.Price).First(),
+                    Brand = car.Model.CarBrand.Name,
+                    Model = car.Model.Name,
                 })
                 .ToListAsync();
         }
