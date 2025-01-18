@@ -5,27 +5,36 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Services.Repositories.Abstractions;
 using Infrastructure.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.Implementations
 {
-    public class ReservationRepository: IReservationRepository
+    public class ReservationRepository : IReservationRepository
     {
         private readonly DatabaseContext _context;
-        public ReservationRepository(DatabaseContext context)
+        private readonly ICarRepository _carRepository;
+
+        public ReservationRepository(DatabaseContext context, ICarRepository carRepository)
         {
             _context = context;
+            _carRepository = carRepository;
         }
-        
+
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId && 
-                                                              cr.StartDateUtc <= DateTime.UtcNow.AddDays(10) &&
-                                                              DateTime.UtcNow <= cr.EndDateUtc);
+            if (!await _context.Car.AnyAsync(c => c.Id == carId, cancellationToken))
+            {
+                throw new Exception($"Car with id {carId} does not exist");
+            }
+
+            var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId &&
+                                                             cr.StartDateUtc <= DateTime.UtcNow.AddDays(10) &&
+                                                             DateTime.UtcNow <= cr.EndDateUtc);
             if (isReserv)
             {
                 throw new Exception("Car is already reserved");
             }
-          
+
             var newReserv = new CarReservation
             {
                 CarId = carId,
@@ -39,3 +48,4 @@ namespace Infrastructure.Repositories.Implementations
         }
     }
 }
+
