@@ -8,6 +8,10 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
 {
     public void Configure(EntityTypeBuilder<Car> builder)
     {
+        builder.HasMany(b => b.Reservations).WithOne(r => r.Car).HasForeignKey(r => r.CarId);
+        builder.HasMany(b => b.CarPrices).WithOne(r => r.Car).HasForeignKey(r => r.CarId);
+        builder.Property(p => p.Vin).HasMaxLength(4000);
+        
         builder.HasData(
             new Car
             {

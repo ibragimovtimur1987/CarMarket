@@ -8,6 +8,7 @@ public class CarBrandConfiguration : IEntityTypeConfiguration<CarBrand>
 {
     public void Configure(EntityTypeBuilder<CarBrand> builder)
     {
+        builder.Property(p => p.Name).HasMaxLength(4000);
         builder.HasData(
             new CarBrand
             {

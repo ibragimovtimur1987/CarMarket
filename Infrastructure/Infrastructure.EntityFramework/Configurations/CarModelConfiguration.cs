@@ -8,6 +8,9 @@ public class CarModelConfiguration : IEntityTypeConfiguration<CarModel>
 {
     public void Configure(EntityTypeBuilder<CarModel> builder)
     {
+        builder.HasMany(b => b.Cars).WithOne(r => r.Model).HasForeignKey(r => r.ModelId);
+        builder.Property(p => p.Name).HasMaxLength(4000);
+        
         builder.HasData(
             new CarModel
             {
