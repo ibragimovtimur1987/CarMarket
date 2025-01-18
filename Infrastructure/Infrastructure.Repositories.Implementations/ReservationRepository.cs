@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories.Implementations
     {
         private readonly DatabaseContext _context;
         private readonly ICarRepository _carRepository;
-
+        private readonly int ReservationDaysCount = 10;
         public ReservationRepository(DatabaseContext context, ICarRepository carRepository)
         {
             _context = context;
@@ -28,7 +28,7 @@ namespace Infrastructure.Repositories.Implementations
             }
 
             var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId &&
-                                                             cr.StartDateUtc <= DateTime.UtcNow.AddDays(10) &&
+                                                             cr.StartDateUtc <= DateTime.UtcNow.AddDays(ReservationDaysCount) &&
                                                              DateTime.UtcNow <= cr.EndDateUtc);
             if (isReserv)
             {
@@ -39,7 +39,7 @@ namespace Infrastructure.Repositories.Implementations
             {
                 CarId = carId,
                 StartDateUtc = DateTime.UtcNow,
-                EndDateUtc = DateTime.UtcNow.AddDays(10),
+                EndDateUtc = DateTime.UtcNow.AddDays(ReservationDaysCount),
                 ReservedAtUtc = DateTime.UtcNow
             };
 
