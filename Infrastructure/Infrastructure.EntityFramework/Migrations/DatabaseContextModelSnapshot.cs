@@ -194,7 +194,7 @@ namespace Infrastructure.EntityFramework.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("EndDateUtc")
+                    b.Property<DateTime?>("EndDateUtc")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal>("PriceAmount")
@@ -214,49 +214,46 @@ namespace Infrastructure.EntityFramework.Migrations
                         {
                             Id = 1,
                             CarId = 1,
-                            EndDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             PriceAmount = 25000m,
-                            StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 2,
                             CarId = 1,
-                            EndDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             PriceAmount = 10000m,
-                            StartDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 3,
                             CarId = 2,
-                            EndDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             PriceAmount = 18000m,
-                            StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 4,
                             CarId = 3,
-                            EndDateUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PriceAmount = 55000m,
-                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 5,
                             CarId = 4,
-                            EndDateUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PriceAmount = 25000m,
-                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 6,
                             CarId = 5,
-                            EndDateUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PriceAmount = 25000m,
-                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
 
@@ -291,9 +288,9 @@ namespace Infrastructure.EntityFramework.Migrations
                         {
                             Id = 1,
                             CarId = 1,
-                            EndDateUtc = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReservedAtUtc = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDateUtc = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            EndDateUtc = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReservedAtUtc = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            StartDateUtc = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
 

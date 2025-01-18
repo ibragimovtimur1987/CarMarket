@@ -14,8 +14,9 @@ public class CarReservationConfiguration : IEntityTypeConfiguration<CarReservati
             {
                 Id = 1,
                 CarId = 1,
-                StartDateUtc = new DateTime(2024, 1, 10),
-                EndDateUtc = new DateTime(2024, 1, 20),
+                StartDateUtc = new DateTime(2024, 1, 10, 0, 0, 0, DateTimeKind.Utc ),
+                EndDateUtc = new DateTime(2024, 1, 20, 0, 0, 0, DateTimeKind.Utc),
+                ReservedAtUtc = new DateTime(2024, 1, 10, 0, 0, 0, DateTimeKind.Utc),
             }
         );
     }

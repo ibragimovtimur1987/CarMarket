@@ -10,7 +10,7 @@ public class CarPrice
     
     public DateTime StartDateUtc { get; set; }
     
-    public DateTime EndDateUtc { get; set; }
+    public DateTime? EndDateUtc { get; set; }
     
     public decimal PriceAmount { get; set; }
 
