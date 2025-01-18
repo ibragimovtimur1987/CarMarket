@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.EntityFramework
@@ -12,21 +11,8 @@ namespace Infrastructure.EntityFramework
             services.AddDbContext<DatabaseContext>(optionsBuilder
                 => optionsBuilder
                     .UseLazyLoadingProxies() // lazy loading
-                    //.UseNpgsql(connectionString));
-                    .UseSqlite(connectionString));
-                    //.UseSqlServer(connectionString));
-
-                    #region health checks
+                    .UseNpgsql(connectionString));
                     
-                    services.AddHealthChecks()
-                        .AddDbContextCheck<DatabaseContext>(
-                            tags: new[] { "db_ef_healthcheck" },
-                            customTestQuery: async (context, token) =>
-                            {
-                                return await context.Lessons.AnyAsync(token);
-                            });
-
-                    #endregion
                     return services;
         }
     }

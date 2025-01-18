@@ -89,10 +89,8 @@ namespace WebApi
         {
             var configuration = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<CourseMappingsProfile>();
-                cfg.AddProfile<LessonMappingsProfile>();
-                cfg.AddProfile<Services.Implementations.Mapping.CourseMappingsProfile>();
-                cfg.AddProfile<Services.Implementations.Mapping.LessonMappingsProfile>();
+                cfg.AddProfile<CarMappingsProfile>();
+                cfg.AddProfile<ReservationMappingsProfile>();
             });
             configuration.AssertConfigurationIsValid();
             return configuration;
