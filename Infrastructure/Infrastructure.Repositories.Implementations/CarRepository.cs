@@ -22,9 +22,12 @@ namespace Infrastructure.Repositories.Implementations
             return await _context.Cars
                 .Where(car => car.Reservations
                     .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || res.EndDateUtc < queryModel.AvailabilityDateUtc))
+                .Where(car => car.CarPrices
+                    .Any(p => queryModel.AvailabilityDateUtc > p.StartDateUtc && queryModel.AvailabilityDateUtc < p.EndDateUtc))
                 .Select(car => new SearchCarsResultModel
                 {
-                    CarId = car.Id
+                    CarId = car.Id,
+                    Price = car.CarPrices.Select(p => p.PriceAmount).First()
                 })
                 .ToListAsync();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
@@ -17,7 +18,14 @@ namespace Infrastructure.Repositories.Implementations
         
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            var newBooking = new CarReservation
+            var isReserv = _context.CarReservations.Any(cr => cr.CarId == carId && cr.StartDateUtc == DateTime.UtcNow &&
+                                                            cr.EndDateUtc == DateTime.UtcNow.AddDays(10));
+            if (isReserv)
+            {
+                throw new Exception("Car is already reserved");
+            }
+          
+            var newReserv = new CarReservation
             {
                 CarId = carId,
                 StartDateUtc = DateTime.UtcNow,
@@ -25,7 +33,7 @@ namespace Infrastructure.Repositories.Implementations
                 ReservedAtUtc = DateTime.UtcNow
             };
 
-            _context.CarReservations.Add(newBooking);
+            _context.CarReservations.Add(newReserv);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }
