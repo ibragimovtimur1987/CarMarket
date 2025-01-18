@@ -222,9 +222,9 @@ namespace Infrastructure.EntityFramework.Migrations
                         {
                             Id = 2,
                             CarId = 1,
-                            EndDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            EndDateUtc = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             PriceAmount = 10000m,
-                            StartDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                            StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {

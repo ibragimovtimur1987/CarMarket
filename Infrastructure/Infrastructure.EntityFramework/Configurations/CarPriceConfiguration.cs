@@ -23,8 +23,8 @@ public class CarPriceConfiguration : IEntityTypeConfiguration<CarPrice>
                 Id = 2,
                 CarId = 1,
                 PriceAmount = 10000,
-                StartDateUtc = new DateTime(2024 , 2, 1, 0, 0, 0, DateTimeKind.Utc),
-                EndDateUtc = new DateTime(2024 , 1 , 1, 0, 0, 0, DateTimeKind.Utc),
+                StartDateUtc = new DateTime(2024 , 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDateUtc = new DateTime(2024 , 5 , 1, 0, 0, 0, DateTimeKind.Utc),
             },
             new CarPrice
             {

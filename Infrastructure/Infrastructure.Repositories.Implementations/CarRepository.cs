@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories.Implementations
                 .Where(car => car.Reservations
                     .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || res.EndDateUtc < queryModel.AvailabilityDateUtc))
                 .Where(car => car.CarPrices
-                    .Any(p => queryModel.AvailabilityDateUtc > p.StartDateUtc && queryModel.AvailabilityDateUtc < p.EndDateUtc))
+                    .Any(p => queryModel.AvailabilityDateUtc > p.StartDateUtc && (p.EndDateUtc == null || queryModel.AvailabilityDateUtc < p.EndDateUtc)))
                 .Select(car => new SearchCarsResultModel
                 {
                     CarId = car.Id,
