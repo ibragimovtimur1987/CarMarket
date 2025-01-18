@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Services.Abstractions;
 using AutoMapper;
-using Services.Contracts.Models.Car.GetCars;
+using Services.Contracts.Models.Car.SearchCars;
 
 namespace Services.Implementations
 {
@@ -19,9 +19,9 @@ namespace Services.Implementations
             _mapper = mapper;
             _carRepository = carRepository;
         }
-        public async Task<List<GetCarsResultModel>> GetCarsAsync(GetCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchCarsAsync(SearchCarsQueryModel queryModel)
         {
-            return await _carRepository.GetCarsAsync(queryModel);
+            return await _carRepository.SearchCarsAsync(queryModel);
         }
     }
 }

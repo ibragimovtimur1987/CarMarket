@@ -1,11 +1,12 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services.Abstractions;
-using Services.Contracts.Models.Car.GetCars;
-using WebApi.Models.Car.GetCars;
+using Services.Contracts.Models.Car.SearchCars;
+using WebApi.Models.Car.SearchCars;
 
 namespace WebApi.Controllers
 {
@@ -25,12 +26,13 @@ namespace WebApi.Controllers
             _mapper = mapper;
             _reservationService = reservationService;
         }
-        [HttpGet()]
-        public async Task<IActionResult> GetCarsAsync(GetCarsRequestModel request)
+        
+        [HttpPost("search")]
+        public async Task<IActionResult> SearchCarsAsync(SearchCarsRequestModel request)
         {
-            var query = _mapper.Map<GetCarsQueryModel>(request);
-            var result = await _carService.GetCarsAsync(query);
-            var response = _mapper.Map<GetCarsResponseModel>(result);
+            var query = _mapper.Map<SearchCarsQueryModel>(request);
+            var result = await _carService.SearchCarsAsync(query);
+            var response = _mapper.Map<List<SearchCarsResponseModel>>(result);
             return Ok(response);
         }
         

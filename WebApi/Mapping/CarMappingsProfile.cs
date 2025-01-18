@@ -1,6 +1,6 @@
 using AutoMapper;
-using Services.Contracts.Models.Car.GetCars;
-using WebApi.Models.Car.GetCars;
+using Services.Contracts.Models.Car.SearchCars;
+using WebApi.Models.Car.SearchCars;
 
 namespace WebApi.Mapping
 {
@@ -8,8 +8,8 @@ namespace WebApi.Mapping
     {
         public CarMappingsProfile()
         {
-            CreateMap<GetCarsRequestModel, GetCarsQueryModel>(MemberList.Destination);
-            CreateMap<GetCarsResultModel, GetCarsResponseModel>(MemberList.Destination);
+            CreateMap<SearchCarsRequestModel, SearchCarsQueryModel>(MemberList.Destination);
+            CreateMap<SearchCarsResultModel, SearchCarsResponseModel>(MemberList.Destination);
         }
     }
 }

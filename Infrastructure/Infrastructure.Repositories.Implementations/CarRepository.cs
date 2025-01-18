@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Infrastructure.EntityFramework;
 using Microsoft.EntityFrameworkCore;
-using Services.Contracts.Models.Car.GetCars;
+using Services.Contracts.Models.Car.SearchCars;
 
 namespace Infrastructure.Repositories.Implementations
 {
@@ -17,12 +17,12 @@ namespace Infrastructure.Repositories.Implementations
             _context = context;
         }
         
-        public async Task<List<GetCarsResultModel>> GetCarsAsync(GetCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchCarsAsync(SearchCarsQueryModel queryModel)
         {
             return await _context.Cars
                 .Where(car => car.Reservations
-                    .All(booking => booking.EndDateUtc < queryModel.AvailabilityDateUtc || booking.StartDateUtc > queryModel.AvailabilityDateUtc))
-                .Select(car => new GetCarsResultModel
+                    .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || res.EndDateUtc < queryModel.AvailabilityDateUtc))
+                .Select(car => new SearchCarsResultModel
                 {
                     CarId = car.Id
                 })

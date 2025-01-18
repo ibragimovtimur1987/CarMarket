@@ -17,14 +17,12 @@ namespace Infrastructure.Repositories.Implementations
         
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            var startDate = DateTime.Today;
-            var endDate = startDate.AddDays(10);
-
             var newBooking = new CarReservation
             {
                 CarId = carId,
-                StartDateUtc = startDate,
-                EndDateUtc = endDate
+                StartDateUtc = DateTime.UtcNow,
+                EndDateUtc = DateTime.UtcNow.AddDays(10),
+                ReservedAtUtc = DateTime.UtcNow
             };
 
             _context.CarReservations.Add(newBooking);
