@@ -1,4 +1,4 @@
-namespace WebApi.Models.Car.SearchCars;
+namespace WebApi.Models.Car.Search;
 
 public class SearchCarsResponseModel
 {

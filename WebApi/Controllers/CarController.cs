@@ -5,8 +5,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services.Abstractions;
-using Services.Contracts.Models.Car.SearchCars;
-using WebApi.Models.Car.SearchCars;
+using Services.Contracts.Models.Car.Search;
+using WebApi.Models.Car.Search;
 
 namespace WebApi.Controllers
 {

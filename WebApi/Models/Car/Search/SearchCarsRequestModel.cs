@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Models.Car.SearchCars;
+namespace WebApi.Models.Car.Search;
 
 public class SearchCarsRequestModel
 {

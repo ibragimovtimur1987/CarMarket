@@ -1,6 +1,6 @@
 using AutoMapper;
-using Services.Contracts.Models.Car.SearchCars;
-using WebApi.Models.Car.SearchCars;
+using Services.Contracts.Models.Car.Search;
+using WebApi.Models.Car.Search;
 
 namespace WebApi.Mapping
 {

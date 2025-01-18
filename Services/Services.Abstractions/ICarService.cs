@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Services.Contracts.Models.Car.SearchCars;
+using Services.Contracts.Models.Car.Search;
 
 namespace Services.Abstractions
 {

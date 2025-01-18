@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Infrastructure.EntityFramework;
 using Microsoft.EntityFrameworkCore;
-using Services.Contracts.Models.Car.SearchCars;
+using Services.Contracts.Models.Car.Search;
 
 namespace Infrastructure.Repositories.Implementations
 {

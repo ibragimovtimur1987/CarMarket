@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Services.Abstractions;
 using AutoMapper;
-using Services.Contracts.Models.Car.SearchCars;
+using Services.Contracts.Models.Car.Search;
 
 namespace Services.Implementations
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Services.Contracts.Models.Car.SearchCars;
+namespace Services.Contracts.Models.Car.Search;
 
 public class SearchCarsQueryModel
 {
