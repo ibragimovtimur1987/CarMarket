@@ -1,0 +1,53 @@
+﻿using System;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Infrastructure.EntityFramework.Configurations;
+
+public class CarPriceConfiguration : IEntityTypeConfiguration<Price>
+{
+    public void Configure(EntityTypeBuilder<Price> builder)
+    {
+        builder.HasData(
+            new Price
+            {
+              CarId = 1,
+              PriceAmount = 25000,
+              StartDateUtc = new DateTime(2024 , 1, 1),
+              EndDateUtc = new DateTime(2024 , 2 , 1),
+            },
+            new Price
+            {
+                CarId = 1,
+                PriceAmount = 10000,
+                StartDateUtc = new DateTime(2024 , 2, 1),
+                EndDateUtc = new DateTime(2024 , 1 , 1),
+            },
+            new Price
+            {
+                CarId = 2,
+                PriceAmount = 18000,
+                StartDateUtc = new DateTime(2024 , 1, 1),
+                EndDateUtc = new DateTime(2025 , 1 , 1),
+            },
+            new Price
+            {
+                CarId = 3,
+                PriceAmount = 55000,
+                StartDateUtc = new DateTime(2025 , 1, 1)
+            },
+            new Price
+            {
+                CarId = 4,
+                PriceAmount = 25000,
+                StartDateUtc = new DateTime(2025 , 1, 1)
+            },
+            new Price
+            {
+                CarId = 5,
+                PriceAmount = 25000,
+                StartDateUtc = new DateTime(2025 , 1, 1)
+            });
+    }
+}
