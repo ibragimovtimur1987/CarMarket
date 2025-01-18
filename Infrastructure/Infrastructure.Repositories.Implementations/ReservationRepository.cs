@@ -18,8 +18,9 @@ namespace Infrastructure.Repositories.Implementations
         
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            var isReserv = _context.CarReservations.Any(cr => cr.CarId == carId && cr.StartDateUtc == DateTime.UtcNow &&
-                                                            cr.EndDateUtc == DateTime.UtcNow.AddDays(10));
+            var isReserv = _context.CarReservations.Any(cr => cr.CarId == carId && 
+                                                              cr.StartDateUtc <= DateTime.UtcNow.AddDays(10) &&
+                                                              DateTime.UtcNow <= cr.EndDateUtc);
             if (isReserv)
             {
                 throw new Exception("Car is already reserved");
