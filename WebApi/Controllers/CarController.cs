@@ -22,7 +22,7 @@ namespace WebApi.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-        
+        [HttpGet("Car")]
         public async Task<IActionResult> GetCarsAsync(GetCarsRequestModel request)
         {
             var query = _mapper.Map<GetCarsQueryModel>(request);

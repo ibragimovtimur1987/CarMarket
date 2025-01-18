@@ -8,8 +8,8 @@ namespace WebApi.Mapping
     {
         public CarMappingsProfile()
         {
-            CreateMap<GetCarsQueryModel, GetCarsRequestModel>();
-            CreateMap<GetCarsResultModel, GetCarsResponseModel>();
+            CreateMap<GetCarsRequestModel, GetCarsQueryModel>(MemberList.Destination);
+            CreateMap<GetCarsResultModel, GetCarsResponseModel>(MemberList.Destination);
         }
     }
 }

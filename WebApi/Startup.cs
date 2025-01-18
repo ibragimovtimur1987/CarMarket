@@ -1,14 +1,10 @@
 using AutoMapper;
-using MassTransit;
-using MassTransit.RabbitMqTransport;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApi.Mapping;
-using WebApi.Settings;
 
 namespace WebApi
 {
@@ -29,13 +25,6 @@ namespace WebApi
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
-            
-            services.AddMassTransit(x => {
-                x.UsingRabbitMq((context, cfg) =>
-                {
-                    ConfigureRmq(cfg, Configuration);
-                });
-            });
             services.AddCors();
         }
 
@@ -48,37 +37,26 @@ namespace WebApi
             }
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            app.UseHealthChecks("/health");
-            app.UseHealthChecks("/db_ef_healthcheck", new HealthCheckOptions
-            {
-                Predicate = healthCheck => healthCheck.Tags.Contains("db_ef_healthcheck") 
-            });
 
             app.UseRouting();
 
             app.UseAuthorization();
-
-            if (!env.IsProduction())
-            {
-                // Enable middleware to serve generated Swagger as a JSON endpoint.
-                app.UseSwagger();
-
-                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-                // specifying the Swagger JSON endpoint.
-               
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                    c.RoutePrefix = string.Empty;
-                });
-            }
             
-            app.UseEndpoints(endpoints =>
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+
+            app.UseSwaggerUI(c =>
             {
-                endpoints.MapControllers();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
             });
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
-        
+
         private static IServiceCollection InstallAutomapper(IServiceCollection services)
         {
             services.AddSingleton<IMapper>(new Mapper(GetMapperConfiguration()));
@@ -94,23 +72,6 @@ namespace WebApi
             });
             configuration.AssertConfigurationIsValid();
             return configuration;
-        }
-
-        /// <summary>
-        /// Конфигурирование RMQ.
-        /// </summary>
-        /// <param name="configurator"> Конфигуратор RMQ. </param>
-        /// <param name="configuration"> Конфигурация приложения. </param>
-        private static void ConfigureRmq(IRabbitMqBusFactoryConfigurator configurator, IConfiguration configuration)
-        {
-            var rmqSettings = configuration.Get<ApplicationSettings>().RmqSettings;
-            configurator.Host(rmqSettings.Host,
-                rmqSettings.VHost,
-                h =>
-                {
-                    h.Username(rmqSettings.Login);
-                    h.Password(rmqSettings.Password);
-                });
         }
     }
 }

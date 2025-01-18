@@ -2,7 +2,7 @@ using Xunit;
 
 namespace Services.UnitTests;
 
-public class LessonServiceTests
+public class CarServiceTests
 {
     [Fact]
     public void Test()

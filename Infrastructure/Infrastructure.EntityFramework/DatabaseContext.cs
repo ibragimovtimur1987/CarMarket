@@ -24,6 +24,11 @@ namespace Infrastructure.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);            
+            
+            modelBuilder.Entity<Car>()
+                .HasMany(u => u.Reservations)
+                .WithOne(c=> c.Car)
+                .IsRequired();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

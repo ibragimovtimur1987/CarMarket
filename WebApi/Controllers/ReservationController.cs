@@ -25,7 +25,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("Reservation")]
         public async Task<IActionResult> ReservationAsync(ReservationCarRequestModel requestModel, CancellationToken cancellationToken)
         {
             var query = _mapper.Map<ReservationCarQueryModel>(requestModel);
