@@ -12,15 +12,15 @@ namespace Infrastructure.EntityFramework
         {
         }
         
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<Car> Car { get; set; }
         
-        public DbSet<CarModel> CarModels { get; set; }
+        public DbSet<CarModel> CarModel { get; set; }
         
-        public DbSet<CarBrand> CarBrands { get; set; }
+        public DbSet<CarBrand> CarBrand { get; set; }
         
-        public DbSet<CarPrice> CarPrices { get; set; }
+        public DbSet<CarPrice> CarPrice { get; set; }
         
-        public DbSet<CarReservation> CarReservations { get; set; }
+        public DbSet<CarReservation> CarReservation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

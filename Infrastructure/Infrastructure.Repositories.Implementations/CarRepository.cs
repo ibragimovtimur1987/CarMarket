@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.Implementations
         
         public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel)
         {
-            return await _context.Cars
+            return await _context.Car
                 .Where(car => car.Reservations
                     .All(res => res.StartDateUtc > queryModel.AvailabilityDateUtc || 
                                 res.EndDateUtc < queryModel.AvailabilityDateUtc))
@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories.Implementations
                 .Select(car => new SearchCarsResultModel
                 {
                     CarId = car.Id,
-                    Price = car.CarPrices.Select(p => p.PriceAmount).First()
+                    Price = car.CarPrices.Select(p => p.Price).First()
                 })
                 .ToListAsync();
         }

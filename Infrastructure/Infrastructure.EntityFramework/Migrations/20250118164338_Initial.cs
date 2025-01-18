@@ -15,7 +15,7 @@ namespace Infrastructure.EntityFramework.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CarBrands",
+                name: "CarBrand",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -24,11 +24,11 @@ namespace Infrastructure.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarBrands", x => x.Id);
+                    table.PrimaryKey("PK_CarBrand", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarModels",
+                name: "CarModel",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -39,16 +39,16 @@ namespace Infrastructure.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarModels", x => x.Id);
+                    table.PrimaryKey("PK_CarModel", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarModels_CarBrands_CarBrandId",
+                        name: "FK_CarModel_CarBrand_CarBrandId",
                         column: x => x.CarBrandId,
-                        principalTable: "CarBrands",
+                        principalTable: "CarBrand",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cars",
+                name: "Car",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -58,17 +58,17 @@ namespace Infrastructure.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cars", x => x.Id);
+                    table.PrimaryKey("PK_Car", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cars_CarModels_ModelId",
+                        name: "FK_Car_CarModel_ModelId",
                         column: x => x.ModelId,
-                        principalTable: "CarModels",
+                        principalTable: "CarModel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarPrices",
+                name: "CarPrice",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -76,21 +76,21 @@ namespace Infrastructure.EntityFramework.Migrations
                     CarId = table.Column<int>(type: "integer", nullable: false),
                     StartDateUtc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     EndDateUtc = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    PriceAmount = table.Column<decimal>(type: "numeric", nullable: false)
+                    Price = table.Column<decimal>(type: "numeric", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarPrices", x => x.Id);
+                    table.PrimaryKey("PK_CarPrice", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarPrices_Cars_CarId",
+                        name: "FK_CarPrice_Car_CarId",
                         column: x => x.CarId,
-                        principalTable: "Cars",
+                        principalTable: "Car",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarReservations",
+                name: "CarReservation",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -102,17 +102,17 @@ namespace Infrastructure.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarReservations", x => x.Id);
+                    table.PrimaryKey("PK_CarReservation", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarReservations_Cars_CarId",
+                        name: "FK_CarReservation_Car_CarId",
                         column: x => x.CarId,
-                        principalTable: "Cars",
+                        principalTable: "Car",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "CarBrands",
+                table: "CarBrand",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
@@ -124,7 +124,7 @@ namespace Infrastructure.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "CarModels",
+                table: "CarModel",
                 columns: new[] { "Id", "BrandId", "CarBrandId", "Name" },
                 values: new object[,]
                 {
@@ -137,7 +137,7 @@ namespace Infrastructure.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Cars",
+                table: "Car",
                 columns: new[] { "Id", "ModelId", "Vin" },
                 values: new object[,]
                 {
@@ -149,8 +149,8 @@ namespace Infrastructure.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "CarPrices",
-                columns: new[] { "Id", "CarId", "EndDateUtc", "PriceAmount", "StartDateUtc" },
+                table: "CarPrice",
+                columns: new[] { "Id", "CarId", "EndDateUtc", "Price", "StartDateUtc" },
                 values: new object[,]
                 {
                     { 1, 1, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc), 25000m, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) },
@@ -162,48 +162,48 @@ namespace Infrastructure.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "CarReservations",
+                table: "CarReservation",
                 columns: new[] { "Id", "CarId", "EndDateUtc", "ReservedAtUtc", "StartDateUtc" },
                 values: new object[] { 1, 1, new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc) });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarModels_CarBrandId",
-                table: "CarModels",
+                name: "IX_Car_ModelId",
+                table: "Car",
+                column: "ModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CarModel_CarBrandId",
+                table: "CarModel",
                 column: "CarBrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarPrices_CarId",
-                table: "CarPrices",
+                name: "IX_CarPrice_CarId",
+                table: "CarPrice",
                 column: "CarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarReservations_CarId",
-                table: "CarReservations",
+                name: "IX_CarReservation_CarId",
+                table: "CarReservation",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cars_ModelId",
-                table: "Cars",
-                column: "ModelId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CarPrices");
+                name: "CarPrice");
 
             migrationBuilder.DropTable(
-                name: "CarReservations");
+                name: "CarReservation");
 
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "Car");
 
             migrationBuilder.DropTable(
-                name: "CarModels");
+                name: "CarModel");
 
             migrationBuilder.DropTable(
-                name: "CarBrands");
+                name: "CarBrand");
         }
     }
 }

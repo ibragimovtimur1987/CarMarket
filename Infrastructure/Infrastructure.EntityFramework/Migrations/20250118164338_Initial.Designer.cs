@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.EntityFramework.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250118152957_Initial")]
+    [Migration("20250118164338_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -47,7 +47,7 @@ namespace Infrastructure.EntityFramework.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Car");
 
                     b.HasData(
                         new
@@ -96,7 +96,7 @@ namespace Infrastructure.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarBrands");
+                    b.ToTable("CarBrand");
 
                     b.HasData(
                         new
@@ -148,7 +148,7 @@ namespace Infrastructure.EntityFramework.Migrations
 
                     b.HasIndex("CarBrandId");
 
-                    b.ToTable("CarModels");
+                    b.ToTable("CarModel");
 
                     b.HasData(
                         new
@@ -203,7 +203,7 @@ namespace Infrastructure.EntityFramework.Migrations
                     b.Property<DateTime?>("EndDateUtc")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("PriceAmount")
+                    b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("StartDateUtc")
@@ -213,7 +213,7 @@ namespace Infrastructure.EntityFramework.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarPrices");
+                    b.ToTable("CarPrice");
 
                     b.HasData(
                         new
@@ -221,7 +221,7 @@ namespace Infrastructure.EntityFramework.Migrations
                             Id = 1,
                             CarId = 1,
                             EndDateUtc = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PriceAmount = 25000m,
+                            Price = 25000m,
                             StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -229,7 +229,7 @@ namespace Infrastructure.EntityFramework.Migrations
                             Id = 2,
                             CarId = 1,
                             EndDateUtc = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PriceAmount = 10000m,
+                            Price = 10000m,
                             StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -237,28 +237,28 @@ namespace Infrastructure.EntityFramework.Migrations
                             Id = 3,
                             CarId = 2,
                             EndDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PriceAmount = 18000m,
+                            Price = 18000m,
                             StartDateUtc = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 4,
                             CarId = 3,
-                            PriceAmount = 55000m,
+                            Price = 55000m,
                             StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 5,
                             CarId = 4,
-                            PriceAmount = 25000m,
+                            Price = 25000m,
                             StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = 6,
                             CarId = 5,
-                            PriceAmount = 25000m,
+                            Price = 25000m,
                             StartDateUtc = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
@@ -287,7 +287,7 @@ namespace Infrastructure.EntityFramework.Migrations
 
                     b.HasIndex("CarId");
 
-                    b.ToTable("CarReservations");
+                    b.ToTable("CarReservation");
 
                     b.HasData(
                         new

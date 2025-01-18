@@ -18,7 +18,7 @@ namespace Infrastructure.Repositories.Implementations
         
         public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            var isReserv = _context.CarReservations.Any(cr => cr.CarId == carId && 
+            var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId && 
                                                               cr.StartDateUtc <= DateTime.UtcNow.AddDays(10) &&
                                                               DateTime.UtcNow <= cr.EndDateUtc);
             if (isReserv)
@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories.Implementations
                 ReservedAtUtc = DateTime.UtcNow
             };
 
-            _context.CarReservations.Add(newReserv);
+            _context.CarReservation.Add(newReserv);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

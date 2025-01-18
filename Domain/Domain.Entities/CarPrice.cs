@@ -12,7 +12,7 @@ public class CarPrice
     
     public DateTime? EndDateUtc { get; set; }
     
-    public decimal PriceAmount { get; set; }
+    public decimal Price { get; set; }
 
     public virtual Car Car { get; set; }
 }

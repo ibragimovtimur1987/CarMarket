@@ -14,7 +14,7 @@ public class CarPriceConfiguration : IEntityTypeConfiguration<CarPrice>
             {
               Id = 1,
               CarId = 1,
-              PriceAmount = 25000,
+              Price = 25000,
               StartDateUtc = new DateTime(2024 , 1, 1, 0, 0, 0, DateTimeKind.Utc),
               EndDateUtc = new DateTime(2024 , 2 , 1, 0, 0, 0, DateTimeKind.Utc),
             },
@@ -22,7 +22,7 @@ public class CarPriceConfiguration : IEntityTypeConfiguration<CarPrice>
             {
                 Id = 2,
                 CarId = 1,
-                PriceAmount = 10000,
+                Price = 10000,
                 StartDateUtc = new DateTime(2024 , 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 EndDateUtc = new DateTime(2024 , 5 , 1, 0, 0, 0, DateTimeKind.Utc),
             },
@@ -30,7 +30,7 @@ public class CarPriceConfiguration : IEntityTypeConfiguration<CarPrice>
             {
                 Id = 3,
                 CarId = 2,
-                PriceAmount = 18000,
+                Price = 18000,
                 StartDateUtc = new DateTime(2024 , 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 EndDateUtc = new DateTime(2025 , 1 , 1, 0, 0, 0, DateTimeKind.Utc),
             },
@@ -38,21 +38,21 @@ public class CarPriceConfiguration : IEntityTypeConfiguration<CarPrice>
             {
                 Id = 4,
                 CarId = 3,
-                PriceAmount = 55000,
+                Price = 55000,
                 StartDateUtc = new DateTime(2025 , 1, 1, 0, 0, 0, DateTimeKind.Utc)
             },
             new CarPrice
             {
                 Id = 5,
                 CarId = 4,
-                PriceAmount = 25000,
+                Price = 25000,
                 StartDateUtc = new DateTime(2025 , 1, 1, 0, 0, 0, DateTimeKind.Utc)
             },
             new CarPrice
             {
                 Id = 6,
                 CarId = 5,
-                PriceAmount = 25000,
+                Price = 25000,
                 StartDateUtc = new DateTime(2025 , 1, 1, 0, 0, 0, DateTimeKind.Utc)
             });
     }
