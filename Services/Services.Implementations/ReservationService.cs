@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Services.Abstractions;
 using AutoMapper;
-using Services.Contracts.Models.ReservationCar;
 
 namespace Services.Implementations
 {
@@ -20,9 +19,9 @@ namespace Services.Implementations
             _reservationRepository = reservationRepository;
         }
         
-        public async Task ReservationAsync(ReservationCarQueryModel query, CancellationToken cancellationToken)
+        public async Task ReservationAsync(int carId, CancellationToken cancellationToken)
         {
-            await _reservationRepository.ReservationAsync(query, cancellationToken);
+            await _reservationRepository.ReservationAsync(carId, cancellationToken);
         }
     }
 }

@@ -68,7 +68,6 @@ namespace WebApi
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<CarMappingsProfile>();
-                cfg.AddProfile<ReservationMappingsProfile>();
             });
             configuration.AssertConfigurationIsValid();
             return configuration;

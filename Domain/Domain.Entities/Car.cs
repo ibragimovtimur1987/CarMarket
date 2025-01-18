@@ -15,7 +15,7 @@ public class Car
     
     public string Vin { get; set; }
 
-    public CarModel Model { get; set; }
+    public virtual CarModel Model { get; set; }
     
     public virtual List<Reservation> Reservations { get; set; }
 }

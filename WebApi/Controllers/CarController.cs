@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,26 +10,35 @@ using WebApi.Models.Car.GetCars;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("cars")]
     public class CarController: ControllerBase
     {
-        private readonly ICarService _service;
+        private readonly ICarService _carService;
         private readonly IMapper _mapper;
         private readonly ILogger<CarController> _logger;
-
-        public CarController(ICarService service, ILogger<CarController> logger, IMapper mapper)
+        private readonly IReservationService _reservationService;
+        
+        public CarController(ICarService carService, ILogger<CarController> logger, IMapper mapper, IReservationService reservationService)
         {
-            _service = service;
+            _carService = carService;
             _logger = logger;
             _mapper = mapper;
+            _reservationService = reservationService;
         }
-        [HttpGet("Car")]
+        [HttpGet()]
         public async Task<IActionResult> GetCarsAsync(GetCarsRequestModel request)
         {
             var query = _mapper.Map<GetCarsQueryModel>(request);
-            var result = await _service.GetCarsAsync(query);
+            var result = await _carService.GetCarsAsync(query);
             var response = _mapper.Map<GetCarsResponseModel>(result);
             return Ok(response);
+        }
+        
+        [HttpPost("{carId:int}/reservation")]
+        public async Task<IActionResult> ReservationAsync(int carId, CancellationToken cancellationToken)
+        {
+            await _reservationService.ReservationAsync(carId, cancellationToken);
+            return Ok();
         }
     }
 }

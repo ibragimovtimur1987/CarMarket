@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Entities;
+using Infrastructure.EntityFramework.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -29,6 +30,8 @@ namespace Infrastructure.EntityFramework
                 .HasMany(u => u.Reservations)
                 .WithOne(c=> c.Car)
                 .IsRequired();
+            
+            modelBuilder.ApplyConfiguration(new BrandConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

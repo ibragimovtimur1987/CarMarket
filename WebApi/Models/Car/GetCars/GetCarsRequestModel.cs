@@ -4,5 +4,5 @@ namespace WebApi.Models.Car.GetCars;
 
 public class GetCarsRequestModel
 {
-    public DateTime SelectedDateUtc { get; set; }
+    public DateTime AvailabilityDateUtc { get; set; }
 }

@@ -21,7 +21,7 @@ namespace Infrastructure.Repositories.Implementations
         {
             return await _context.Cars
                 .Where(car => car.Reservations
-                    .All(booking => booking.EndDateUtc < queryModel.SelectedDateUtc || booking.StartDateUtc > queryModel.SelectedDateUtc))
+                    .All(booking => booking.EndDateUtc < queryModel.AvailabilityDateUtc || booking.StartDateUtc > queryModel.AvailabilityDateUtc))
                 .Select(car => new GetCarsResultModel
                 {
                     CarId = car.Id

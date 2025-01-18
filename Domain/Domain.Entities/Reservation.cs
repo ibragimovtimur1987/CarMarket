@@ -14,5 +14,5 @@ public class Reservation
     
     public DateTime ReservedAtUtc { get; set; }
 
-    public Car Car { get; set; }
+    public virtual Car Car { get; set; }
 }
