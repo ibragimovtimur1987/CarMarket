@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Reflection;
-using Domain.Entities;
 using FluentAssertions;
 using Services.Contracts.Models.Car.Search;
 using Xunit;

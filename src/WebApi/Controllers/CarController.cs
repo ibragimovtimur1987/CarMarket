@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Services.Abstractions;
 using Services.Contracts.Models.Car.Search;
 using WebApi.Models.Car.Search;

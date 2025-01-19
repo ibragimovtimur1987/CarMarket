@@ -1,7 +1,6 @@
 ﻿using AutoFixture;
 using AutoMapper;
 using FluentAssertions;
-using MassTransit.Mediator;
 using Moq;
 using Services.Abstractions;
 using Services.Contracts.Models.Car.Search;
