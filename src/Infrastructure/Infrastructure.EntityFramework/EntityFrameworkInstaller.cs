@@ -8,7 +8,7 @@ namespace Infrastructure.EntityFramework
         public static IServiceCollection ConfigureContext(this IServiceCollection services,
             string connectionString)
         {
-            services.AddDbContext<DatabaseContext>(optionsBuilder
+            services.AddDbContext<CarMarketContext>(optionsBuilder
                 => optionsBuilder
                     .UseLazyLoadingProxies() // lazy loading
                     .UseNpgsql(connectionString));

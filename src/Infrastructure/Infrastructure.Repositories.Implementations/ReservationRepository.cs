@@ -11,9 +11,9 @@ namespace Infrastructure.Repositories.Implementations
 {
     public class ReservationRepository : IReservationRepository
     {
-        private readonly DatabaseContext _context;
+        private readonly ICarMarketContext _context;
         private readonly int ReservationDaysCount = 10;
-        public ReservationRepository(DatabaseContext context)
+        public ReservationRepository(ICarMarketContext context)
         {
             _context = context;
         }
@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories.Implementations
                     await _context.SaveChangesAsync(cancellationToken);
                     await transaction.CommitAsync(cancellationToken);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await transaction.RollbackAsync(cancellationToken);
                     throw;

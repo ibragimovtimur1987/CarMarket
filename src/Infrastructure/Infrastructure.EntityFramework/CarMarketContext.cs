@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Domain.Entities;
 using Infrastructure.EntityFramework.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.EntityFramework
 {
-    public class DatabaseContext : DbContext
+    public class CarMarketContext : DbContext, ICarMarketContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+        public CarMarketContext(DbContextOptions<CarMarketContext> options) : base(options)
         {
         }
         
@@ -21,6 +25,13 @@ namespace Infrastructure.EntityFramework
         public DbSet<CarPrice> CarPrice { get; set; }
         
         public DbSet<CarReservation> CarReservation { get; set; }
+        
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        public DatabaseFacade Database => base.Database;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

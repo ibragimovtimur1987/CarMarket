@@ -11,8 +11,8 @@ namespace Infrastructure.Repositories.Implementations
 
     public class CarRepository: ICarRepository
     {
-        private readonly DatabaseContext _context;
-        public CarRepository(DatabaseContext context)
+        private readonly ICarMarketContext _context;
+        public CarRepository(ICarMarketContext context)
         {
             _context = context;
         }

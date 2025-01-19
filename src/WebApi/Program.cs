@@ -12,7 +12,7 @@ namespace WebApi
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
             }
             host.Run();
         }

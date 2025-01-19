@@ -30,6 +30,7 @@ namespace WebApi
             serviceCollection
                 .AddTransient<ICarService, CarService>()
                 .AddTransient<IReservationService, ReservationService>();
+            serviceCollection.AddScoped<ICarMarketContext, CarMarketContext>();
             return serviceCollection;
         }
         

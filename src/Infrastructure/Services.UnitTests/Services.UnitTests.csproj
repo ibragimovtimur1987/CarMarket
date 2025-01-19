@@ -10,11 +10,21 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Services\Services.Implementations\Services.Implementations.csproj" />
       <ProjectReference Include="..\..\Services\Services.Repositories.Abstractions\Services.Repositories.Abstractions.csproj" />
+      <ProjectReference Include="..\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj" />
+      <ProjectReference Include="..\Infrastructure.Repositories.Implementations\Infrastructure.Repositories.Implementations.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoFixture" Version="5.0.0-preview0011" />
+      <PackageReference Include="FluentAssertions" Version="8.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.1" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
-      <PackageReference Include="xunit" Version="2.5.1" />
+      <PackageReference Include="Moq" Version="4.20.72" />
+      <PackageReference Include="xunit" Version="2.9.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Infrastructure\Repositories\" />
     </ItemGroup>
 
 </Project>
