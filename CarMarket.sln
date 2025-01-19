@@ -1,11 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{BEB722CA-C4E0-4E1B-8536-071D183D5DD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\WebApi\WebApi.csproj", "{BEB722CA-C4E0-4E1B-8536-071D183D5DD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{DD04A90B-59BA-4453-A47D-029C3CA2B335}"
-	ProjectSection(SolutionItems) = preProject
-		Infrastructure\LocalDatabase.db = Infrastructure\LocalDatabase.db
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{C2D75D42-4C3F-4B52-8F4B-5D70DC304DC4}"
 EndProject
@@ -13,21 +10,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{815BA3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BDCE4DE9-7199-42EF-BF47-B620CD97D578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Repositories.Implementations", "Infrastructure\Infrastructure.Repositories.Implementations\Infrastructure.Repositories.Implementations.csproj", "{68D242F0-210A-470A-992E-85245430F6EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Repositories.Implementations", "src\Infrastructure\Infrastructure.Repositories.Implementations\Infrastructure.Repositories.Implementations.csproj", "{68D242F0-210A-470A-992E-85245430F6EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Entities", "Domain\Domain.Entities\Domain.Entities.csproj", "{3518D316-32FD-4E90-842B-C27289F6D68E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Entities", "src\Domain\Domain.Entities\Domain.Entities.csproj", "{3518D316-32FD-4E90-842B-C27289F6D68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Abstractions", "Services\Services.Abstractions\Services.Abstractions.csproj", "{C9D57BE0-6DF1-4938-B845-78AAEA03DB65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Abstractions", "src\Services\Services.Abstractions\Services.Abstractions.csproj", "{C9D57BE0-6DF1-4938-B845-78AAEA03DB65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Contracts", "Services\Services.Contracts\Services.Contracts.csproj", "{3D75824D-7AEE-49D3-AABF-801F42120C2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Contracts", "src\Services\Services.Contracts\Services.Contracts.csproj", "{3D75824D-7AEE-49D3-AABF-801F42120C2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Implementations", "Services\Services.Implementations\Services.Implementations.csproj", "{DCFFFDD1-A39E-4C22-BDF7-727052812AF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Implementations", "src\Services\Services.Implementations\Services.Implementations.csproj", "{DCFFFDD1-A39E-4C22-BDF7-727052812AF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Repositories.Abstractions", "Services\Services.Repositories.Abstractions\Services.Repositories.Abstractions.csproj", "{B2BEE245-9B42-4486-A031-1F5C869AF848}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Repositories.Abstractions", "src\Services\Services.Repositories.Abstractions\Services.Repositories.Abstractions.csproj", "{B2BEE245-9B42-4486-A031-1F5C869AF848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "Infrastructure\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{7FA2A220-4693-4837-930B-E46FDB4C132E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "src\Infrastructure\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{7FA2A220-4693-4837-930B-E46FDB4C132E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UnitTests", "Infrastructure\Services.UnitTests\Services.UnitTests.csproj", "{B2D39D35-4029-4130-B7FF-759F9B8DE215}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UnitTests", "src\Infrastructure\Services.UnitTests\Services.UnitTests.csproj", "{B2D39D35-4029-4130-B7FF-759F9B8DE215}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F546A52-1158-4054-97C9-44AB38311DAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{123ABACF-2ACD-47BC-80A4-C15C17E7EAF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +82,10 @@ Global
 		{DCFFFDD1-A39E-4C22-BDF7-727052812AF3} = {BDCE4DE9-7199-42EF-BF47-B620CD97D578}
 		{B2BEE245-9B42-4486-A031-1F5C869AF848} = {BDCE4DE9-7199-42EF-BF47-B620CD97D578}
 		{7FA2A220-4693-4837-930B-E46FDB4C132E} = {DD04A90B-59BA-4453-A47D-029C3CA2B335}
-		{B2D39D35-4029-4130-B7FF-759F9B8DE215} = {DD04A90B-59BA-4453-A47D-029C3CA2B335}
+		{815BA3AF-E21D-4194-A0F1-892FC8FBACD5} = {1F546A52-1158-4054-97C9-44AB38311DAE}
+		{C2D75D42-4C3F-4B52-8F4B-5D70DC304DC4} = {1F546A52-1158-4054-97C9-44AB38311DAE}
+		{DD04A90B-59BA-4453-A47D-029C3CA2B335} = {1F546A52-1158-4054-97C9-44AB38311DAE}
+		{BDCE4DE9-7199-42EF-BF47-B620CD97D578} = {1F546A52-1158-4054-97C9-44AB38311DAE}
+		{B2D39D35-4029-4130-B7FF-759F9B8DE215} = {123ABACF-2ACD-47BC-80A4-C15C17E7EAF9}
 	EndGlobalSection
 EndGlobal
