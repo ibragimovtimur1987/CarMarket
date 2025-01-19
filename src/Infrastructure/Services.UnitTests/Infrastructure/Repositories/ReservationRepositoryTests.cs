@@ -2,7 +2,6 @@ using AutoFixture;
 using Domain.Entities;
 using FluentAssertions;
 using Infrastructure.Repositories.Implementations;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
 using Services.UnitTests.Infrastructure.EntityFramework;
 using Xunit;
 
