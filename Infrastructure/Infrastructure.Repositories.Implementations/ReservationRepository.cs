@@ -25,24 +25,37 @@ namespace Infrastructure.Repositories.Implementations
                 throw new Exception($"Car with id {carId} does not exist");
             }
 
-            var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId &&
-                                                             cr.StartDateUtc <= DateTime.UtcNow.AddDays(ReservationDaysCount) &&
-                                                             DateTime.UtcNow <= cr.EndDateUtc);
-            if (isReserv)
+            using (var transaction = await _context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable, cancellationToken))
             {
-                throw new Exception("Car is already reserved");
+                try
+                {
+                    var isReserv = _context.CarReservation.Any(cr => cr.CarId == carId &&
+                                                                     cr.StartDateUtc <=
+                                                                     DateTime.UtcNow.AddDays(ReservationDaysCount) &&
+                                                                     DateTime.UtcNow <= cr.EndDateUtc);
+                    if (isReserv)
+                    {
+                        throw new Exception("Car is already reserved");
+                    }
+
+                    var newReserv = new CarReservation
+                    {
+                        CarId = carId,
+                        StartDateUtc = DateTime.UtcNow,
+                        EndDateUtc = DateTime.UtcNow.AddDays(ReservationDaysCount),
+                        ReservedAtUtc = DateTime.UtcNow
+                    };
+
+                    _context.CarReservation.Add(newReserv);
+                    await _context.SaveChangesAsync(cancellationToken);
+                    await transaction.CommitAsync(cancellationToken);
+                }
+                catch (Exception)
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                    throw;
+                }
             }
-
-            var newReserv = new CarReservation
-            {
-                CarId = carId,
-                StartDateUtc = DateTime.UtcNow,
-                EndDateUtc = DateTime.UtcNow.AddDays(ReservationDaysCount),
-                ReservedAtUtc = DateTime.UtcNow
-            };
-
-            _context.CarReservation.Add(newReserv);
-            await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }
