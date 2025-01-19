@@ -1,29 +1,32 @@
 ﻿using AutoFixture;
-using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
+using Infrastructure.EntityFramework;
 using Infrastructure.EntityFramework.Configurations;
+using Microsoft.EntityFrameworkCore;
 
-public sealed class TestDbrainDbContext : DbContext
+namespace Services.UnitTests.Infrastructure.EntityFramework;
+
+public sealed class TestCarMarketDbContext : DbContext, ICarMarketContext
 {
     private readonly IFixture _fixture;
 
     private readonly string _databaseName;
 
-    public TestDbrainDbContext()
+    public TestCarMarketDbContext()
         : this(null)
     {
     }
 
-    public TestDbrainDbContext(string databaseName)
+    public TestCarMarketDbContext(string databaseName)
     {
         _fixture = new Fixture();
         _databaseName = databaseName ?? _fixture.Create<string>();
-        Database.EnsureCreated();
+        base.Database.EnsureCreated();
     }
 
     public override void Dispose()
     {
-        Database.EnsureDeleted();
+        base.Database.EnsureDeleted();
         base.Dispose();
     }
 
@@ -43,12 +46,5 @@ public sealed class TestDbrainDbContext : DbContext
     {
         optionsBuilder.UseInMemoryDatabase(_databaseName);
         base.OnConfiguring(optionsBuilder);
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CarBrandConfiguration).Assembly);
     }
 }
