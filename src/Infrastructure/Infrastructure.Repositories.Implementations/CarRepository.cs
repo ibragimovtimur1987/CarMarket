@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Infrastructure.EntityFramework;
@@ -17,7 +18,7 @@ namespace Infrastructure.Repositories.Implementations
             _context = context;
         }
         
-        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel, CancellationToken cancellationToken)
         {
             return await _context.Car
                 .Where(car => car.Reservations
@@ -33,7 +34,7 @@ namespace Infrastructure.Repositories.Implementations
                     Brand = car.Model.CarBrand.Name,
                     Model = car.Model.Name,
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
     }
 }

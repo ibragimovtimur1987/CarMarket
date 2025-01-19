@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Services.Repositories.Abstractions;
 using Services.Abstractions;
@@ -19,9 +20,9 @@ namespace Services.Implementations
             _mapper = mapper;
             _carRepository = carRepository;
         }
-        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel)
+        public async Task<List<SearchCarsResultModel>> SearchAsync(SearchCarsQueryModel queryModel, CancellationToken cancellationToken)
         {
-            return await _carRepository.SearchAsync(queryModel);
+            return await _carRepository.SearchAsync(queryModel, cancellationToken);
         }
     }
 }

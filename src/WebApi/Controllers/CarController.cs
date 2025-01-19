@@ -16,28 +16,26 @@ namespace WebApi.Controllers
     {
         private readonly ICarService _carService;
         private readonly IMapper _mapper;
-        private readonly ILogger<CarController> _logger;
         private readonly IReservationService _reservationService;
         
-        public CarController(ICarService carService, ILogger<CarController> logger, IMapper mapper, IReservationService reservationService)
+        public CarController(ICarService carService, IMapper mapper, IReservationService reservationService)
         {
             _carService = carService;
-            _logger = logger;
             _mapper = mapper;
             _reservationService = reservationService;
         }
         
         [HttpPost("search")]
-        public async Task<IActionResult> SearchAsync(SearchCarsRequestModel request)
+        public async Task<ActionResult<List<SearchCarsResponseModel>>> SearchAsync(SearchCarsRequestModel request, CancellationToken token)
         {
             var query = _mapper.Map<SearchCarsQueryModel>(request);
-            var result = await _carService.SearchAsync(query);
+            var result = await _carService.SearchAsync(query, token);
             var response = _mapper.Map<List<SearchCarsResponseModel>>(result);
-            return Ok(response);
+            return response;
         }
         
         [HttpPost("{carId:int}/reservation")]
-        public async Task<IActionResult> ReservationAsync(int carId, CancellationToken cancellationToken)
+        public async Task<ActionResult> ReservationAsync(int carId, CancellationToken cancellationToken)
         {
             await _reservationService.ReservationAsync(carId, cancellationToken);
             return Ok();

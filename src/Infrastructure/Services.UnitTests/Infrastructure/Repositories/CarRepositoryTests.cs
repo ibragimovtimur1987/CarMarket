@@ -48,7 +48,7 @@ public class CarRepositoryTests
             .ToListAsync();
 
         // Act
-        var actualResult = await _handler.SearchAsync(query);
+        var actualResult = await _handler.SearchAsync(query, CancellationToken.None);
 
         // assert
         actualResult.Should().BeEquivalentTo(expectedResult);
