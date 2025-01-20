@@ -8,7 +8,7 @@ using WebApi.Controllers;
 using WebApi.Models.Car.Search;
 using Xunit;
 
-namespace Services.UnitTests.WebApi.Controllers
+namespace UnitTests.WebApi.Controllers
 {
     public class CarControllerTests
     {

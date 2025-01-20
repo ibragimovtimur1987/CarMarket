@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Repositories.Abstr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramework", "src\Infrastructure\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj", "{7FA2A220-4693-4837-930B-E46FDB4C132E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UnitTests", "src\Infrastructure\Services.UnitTests\Services.UnitTests.csproj", "{B2D39D35-4029-4130-B7FF-759F9B8DE215}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{B2D39D35-4029-4130-B7FF-759F9B8DE215}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F546A52-1158-4054-97C9-44AB38311DAE}"
 EndProject

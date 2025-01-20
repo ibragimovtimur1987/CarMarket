@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Reflection;
-using Domain.Entities;
 using FluentAssertions;
+using Services.Contracts.Models.Car.Search;
 using Xunit;
 
-namespace Services.UnitTests.Domain
+namespace UnitTests.Services
 {
     public class CommonEntityTests
     {
-        private const string EntitiesNamespace = "Domain.Entities";
+        private const string EntitiesNamespace = "Services.Contracts.Models.Car.Search";
         private readonly List<Type> _types;
 
         public CommonEntityTests()
         {
-            _types = typeof(CarReservation).Assembly
+            _types = typeof(SearchCarsQueryModel).Assembly
                 .GetTypes()
                 .Where(x => x.IsClass
                             && x.FullName.StartsWith(EntitiesNamespace)

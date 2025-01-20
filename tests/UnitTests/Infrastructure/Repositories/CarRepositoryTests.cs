@@ -3,10 +3,10 @@ using FluentAssertions;
 using Infrastructure.Repositories.Implementations;
 using Microsoft.EntityFrameworkCore;
 using Services.Contracts.Models.Car.Search;
-using Services.UnitTests.Infrastructure.EntityFramework;
+using UnitTests.Infrastructure.EntityFramework;
 using Xunit;
 
-namespace Services.UnitTests.Infrastructure.Repositories;
+namespace UnitTests.Infrastructure.Repositories;
 
 public class CarRepositoryTests
 {

@@ -2,7 +2,7 @@ using AutoMapper;
 using WebApi.Mapping;
 using Xunit;
 
-namespace Services.UnitTests.WebApi.Mappings
+namespace UnitTests.WebApi.Mappings
 {
     public class WebApiContractsMappingConfigurationTests
     {

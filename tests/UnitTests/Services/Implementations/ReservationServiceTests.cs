@@ -5,7 +5,7 @@ using Services.Implementations;
 using Services.Repositories.Abstractions;
 using Xunit;
 
-namespace Services.UnitTests.Services.Implementations
+namespace UnitTests.Services.Implementations
 {
     public class ReservationServiceTests
     {

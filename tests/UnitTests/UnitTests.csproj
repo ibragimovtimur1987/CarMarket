@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Services\Services.Implementations\Services.Implementations.csproj" />
-      <ProjectReference Include="..\..\Services\Services.Repositories.Abstractions\Services.Repositories.Abstractions.csproj" />
-      <ProjectReference Include="..\..\WebApi\WebApi.csproj" />
-      <ProjectReference Include="..\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj" />
-      <ProjectReference Include="..\Infrastructure.Repositories.Implementations\Infrastructure.Repositories.Implementations.csproj" />
+      <ProjectReference Include="..\..\src\Domain\Domain.Entities\Domain.Entities.csproj" />
+      <ProjectReference Include="..\..\src\Infrastructure\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj" />
+      <ProjectReference Include="..\..\src\Infrastructure\Infrastructure.Repositories.Implementations\Infrastructure.Repositories.Implementations.csproj" />
+      <ProjectReference Include="..\..\src\Services\Services.Implementations\Services.Implementations.csproj" />
+      <ProjectReference Include="..\..\src\WebApi\WebApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>

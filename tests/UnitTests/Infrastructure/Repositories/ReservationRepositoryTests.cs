@@ -2,10 +2,10 @@ using AutoFixture;
 using Domain.Entities;
 using FluentAssertions;
 using Infrastructure.Repositories.Implementations;
-using Services.UnitTests.Infrastructure.EntityFramework;
+using UnitTests.Infrastructure.EntityFramework;
 using Xunit;
 
-namespace Services.UnitTests.Infrastructure.Repositories;
+namespace UnitTests.Infrastructure.Repositories;
 
 public class ReservationRepositoryTests
 {

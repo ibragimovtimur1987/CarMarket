@@ -4,7 +4,7 @@ using Infrastructure.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace Services.UnitTests.Infrastructure.EntityFramework;
+namespace UnitTests.Infrastructure.EntityFramework;
 
 public sealed class TestCarMarketDbContext : DbContext, ICarMarketContext
 {
