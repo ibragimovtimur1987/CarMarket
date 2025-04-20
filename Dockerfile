@@ -23,9 +23,9 @@ RUN dotnet restore "WebApi/WebApi.csproj"
 # Копируем остальные файлы
 WORKDIR "/src/WebApi"
 
-
 # Добавляем dotnet-ef в PATH
 ENV PATH="$PATH:/usr/local/dotnet-tools"
+
 # Публикуем проект
 RUN dotnet publish "WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
