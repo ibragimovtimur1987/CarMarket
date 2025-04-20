@@ -19,8 +19,6 @@ COPY ["src/Services/Services.Contracts/", "Services/Services.Contracts/"]
 COPY ["src/Services/Services.Abstractions/", "Services/Services.Abstractions/"]
 COPY ["src/Services/Services.Implementations/", "Services/Services.Implementations/"]
 RUN dotnet restore "WebApi/WebApi.csproj"
-
-# Копируем остальные файлы
 WORKDIR "/src/WebApi"
 
 # Добавляем dotnet-ef в PATH
