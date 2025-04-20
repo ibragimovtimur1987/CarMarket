@@ -28,6 +28,9 @@
 
     <ItemGroup>
       <Content Remove="appsettings.json" />
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
       <None Include="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

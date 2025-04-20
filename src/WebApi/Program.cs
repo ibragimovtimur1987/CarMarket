@@ -1,5 +1,6 @@
 using Infrastructure.EntityFramework;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,6 +15,13 @@ namespace WebApi
             {
                 var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
             }
+            
+            //using(var scope = host.Services.CreateScope())
+            //{
+            //    var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
+            //    db.Database.Migrate();
+            //}
+            
             host.Run();
         }
 
