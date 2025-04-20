@@ -16,11 +16,11 @@ namespace WebApi
                 var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
             }
             
-            //using(var scope = host.Services.CreateScope())
-            //{
-            //    var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
-            //    db.Database.Migrate();
-            //}
+            using(var scope = host.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<CarMarketContext>();
+                db.Database.Migrate();
+            }
             
             host.Run();
         }
